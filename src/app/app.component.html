@@ -1,0 +1,39 @@
+<div>
+
+  <h3>Budget</h3>
+  <input [(ngModel)]="budget">
+
+  <h3>Verfügbare Produkte</h3>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Preis</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h4>Einkaufsliste</h4>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gesamtpreis</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
