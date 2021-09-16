@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import Product from "../models/Product";
+import {Component} from '@angular/core';
+import {ShoppinglistService} from "./services/shoppinglist.service";
 
 @Component({
   selector: 'app-root',
@@ -7,13 +7,8 @@ import Product from "../models/Product";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  budget = 0
 
-  products: Product[] = [
-    {name: "Brot", price: 15.8},
-    {name: "Milch", price: 15.8},
-    {name: "Zucker", price: 15.8}
-  ];
-
+  constructor(public shoppinglistService: ShoppinglistService) {
+  }
 
 }

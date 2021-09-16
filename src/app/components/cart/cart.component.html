@@ -1,0 +1,29 @@
+<h4>Einkaufsliste</h4>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Amount</th>
+    <th>Price</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of shoppinglistService.cart">
+    <td>{{item.product.name}}</td>
+    <td>{{item.amount}}</td>
+    <td>{{item.product.price * item.amount}} €</td>
+    <td>
+      <button (click)="shoppinglistService.removeProductFromCart(item.id)" class="btn btn-warning">Delete</button>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>Total price:</td>
+    <td><span class="total-price"
+              [class.budget-reached]="shoppinglistService.cartTotalPrice > shoppinglistService.budget">{{shoppinglistService.cartTotalPrice}}
+      €</span></td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,42 @@
+<h3>Verfügbare Produkte</h3>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Preis</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of shoppinglistService.products"
+      (click)="selectedProduct = product"
+      [class.selected-product]="product.id === selectedProduct?.id"
+  >
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+  </tr>
+  </tbody>
+</table>
+
+
+<div>
+  <input type="number" [(ngModel)]="addCartAmount">
+  <button class="btn btn-success" [disabled]="addCartAmount < 1 || !selectedProduct"
+          (click)="addProductToCart()">
+    Add to Cart
+  </button>
+</div>
+
+
+<div>
+  <div *ngIf="showNewProduct">
+    <input type="text" [(ngModel)]="newProductName">
+    <input type="number" [(ngModel)]="newProductPrice">
+
+    <button class="btn btn-success" (click)="addProduct()" [disabled]="newProductName.length<1 || newProductPrice<1">
+      OK
+    </button>
+    <button class="btn btn-danger" (click)="hideAddProduct()">Abbrechen</button>
+  </div>
+  <button *ngIf="!showNewProduct" class="btn btn-primary" (click)="showAddProduct()">Product hinzufügen</button>
+</div>
