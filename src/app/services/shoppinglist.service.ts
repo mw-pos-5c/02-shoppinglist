@@ -6,20 +6,17 @@ import CartItem from "../../models/CartItem";
   providedIn: 'root'
 })
 export class ShoppinglistService {
-  constructor() {
-  }
-
   budget = 42
-
   products: Product[] = [
     {id: 2, name: "Brot", price: 15.8},
     {id: 1, name: "Milch", price: 15.8},
     {id: 0, name: "Zucker", price: 15.8}
   ];
-
   cart: CartItem[] = [];
   cartTotalPrice: number = 0;
 
+  constructor() {
+  }
 
   addProduct(product: Product) {
     product.id = this.findNextId(this.products);

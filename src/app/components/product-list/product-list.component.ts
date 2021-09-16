@@ -9,16 +9,14 @@ import {ShoppinglistService} from "../../services/shoppinglist.service";
 })
 export class ProductListComponent {
 
-  constructor(public shoppinglistService: ShoppinglistService) {
-  }
-
   showNewProduct = false;
-
   newProductName = '';
   newProductPrice = 0;
-
   selectedProduct: Product | null = null;
   addCartAmount = 0;
+
+  constructor(public shoppinglistService: ShoppinglistService) {
+  }
 
   showAddProduct() {
     this.showNewProduct = true;

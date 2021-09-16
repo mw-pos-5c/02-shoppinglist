@@ -8,8 +8,8 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let product of shoppinglistService.products"
-      (click)="selectedProduct = product"
+  <tr (click)="selectedProduct = product"
+      *ngFor="let product of shoppinglistService.products"
       [class.selected-product]="product.id === selectedProduct?.id"
   >
     <td>{{product.name}}</td>
@@ -20,9 +20,9 @@
 
 
 <div>
-  <input type="number" [(ngModel)]="addCartAmount">
-  <button class="btn btn-success" [disabled]="addCartAmount < 1 || !selectedProduct"
-          (click)="addProductToCart()">
+  <input [(ngModel)]="addCartAmount" type="number">
+  <button (click)="addProductToCart()" [disabled]="addCartAmount < 1 || !selectedProduct"
+          class="btn btn-success">
     Add to Cart
   </button>
 </div>
@@ -30,13 +30,13 @@
 
 <div>
   <div *ngIf="showNewProduct">
-    <input type="text" [(ngModel)]="newProductName">
-    <input type="number" [(ngModel)]="newProductPrice">
+    <input [(ngModel)]="newProductName" type="text">
+    <input [(ngModel)]="newProductPrice" type="number">
 
-    <button class="btn btn-success" (click)="addProduct()" [disabled]="newProductName.length<1 || newProductPrice<1">
+    <button (click)="addProduct()" [disabled]="newProductName.length<1 || newProductPrice<1" class="btn btn-success">
       OK
     </button>
-    <button class="btn btn-danger" (click)="hideAddProduct()">Abbrechen</button>
+    <button (click)="hideAddProduct()" class="btn btn-danger">Abbrechen</button>
   </div>
-  <button *ngIf="!showNewProduct" class="btn btn-primary" (click)="showAddProduct()">Product hinzufügen</button>
+  <button (click)="showAddProduct()" *ngIf="!showNewProduct" class="btn btn-primary">Product hinzufügen</button>
 </div>
